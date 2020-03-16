@@ -1,20 +1,19 @@
 import React from 'react';
 import { TodoList } from './TodoList';
 
-export const Today = ({
+export const OveredTodo = ({
     clickDelete,
     clickDone,
-    todaysTodos
+    overedTodos
 }) => {
-
     return (
         <>
         <TodoList
-            targetTodos={todaysTodos}
+            targetTodos={overedTodos}
             clickDelete={clickDelete}
             clickDone={clickDone}
-            title="今日の"
+            title="期限切れの"
         />
         </>
-    )
+    );
 };

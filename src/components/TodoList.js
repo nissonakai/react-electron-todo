@@ -2,7 +2,12 @@ import React from 'react';
 import { LinkButtons } from './LinkButtons';
 import { Button } from '@material-ui/core';
 
-export const TodoList = ({targetTodos, clickDelete, title}) => {
+export const TodoList = ({
+    targetTodos,
+    clickDelete,
+    clickDone,
+    title
+}) => {
 
     const todoComp = targetTodos.map(todo => {
         return (
@@ -16,8 +21,8 @@ export const TodoList = ({targetTodos, clickDelete, title}) => {
                     >削除</Button>
                 <Button
                     variant="text"
-                    onClick={() => clickDelete(todo)}
-                    >完了</Button>
+                    onClick={() => clickDone(todo)}
+                >{todo.done ? "リストに戻す" : "完了"}</Button>
             </div>
         )
     });
@@ -25,7 +30,7 @@ export const TodoList = ({targetTodos, clickDelete, title}) => {
     return (
         <>
             <LinkButtons />
-            <h1>{title} TODOS</h1>
+            <h1>{title}TODO</h1>
             {todoComp}
         </>
     );

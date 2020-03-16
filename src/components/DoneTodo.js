@@ -1,11 +1,19 @@
 import React from 'react';
-import { LinkButtons } from './LinkButtons';
+import { TodoList } from './TodoList';
 
-export const DoneTodo = () => {
+export const DoneTodo = ({
+    clickDelete,
+    clickDone,
+    doneTodos
+}) => {
     return (
         <>
-        <LinkButtons />
-        <h1>DoneTodo Component</h1>
+            <TodoList
+                targetTodos={doneTodos}
+                clickDelete={clickDelete}
+                clickDone={clickDone}
+                title="完了した"
+            />
         </>
     )
 };
