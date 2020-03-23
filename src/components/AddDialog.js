@@ -7,7 +7,8 @@ import {
     DialogTitle,
     Fab,
     Button,
-    Container
+    Container,
+    Grid
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -18,6 +19,9 @@ const useStyles = makeStyles({
     centering: {
         marginTop: 20,
         textAlign: 'center'
+    },
+    mb: {
+        marginBottom: 10
     }
 });
 
@@ -31,28 +35,32 @@ export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAd
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">新規追加</DialogTitle>
                 <DialogContent>
-                    <>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        name="title"
-                        label="TODO"
-                        type="text"
-                        value={newTodo.title}
-                        onChange={e => handleChange(e)}
-                    />
-                    <TextField
-                        margin="dense"
-                        name="deadline"
-                        label="期日"
-                        type="datetime-local"
-                        InputLabelProps={{
-                            shrink: true,
-                          }}
-                        value={newTodo.deadline}
-                        onChange={e => handleChange(e)}
-                    />
-                    </>
+                    <Container>
+                        <Grid container className={classes.mb}>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                name="title"
+                                label="TODO"
+                                type="text"
+                                value={newTodo.title}
+                                onChange={e => handleChange(e)}
+                            />
+                        </Grid>
+                        <Grid container>
+                            <TextField
+                                margin="dense"
+                                name="deadline"
+                                label="期日"
+                                type="datetime-local"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                value={newTodo.deadline}
+                                onChange={e => handleChange(e)}
+                            />
+                        </Grid>
+                    </Container>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => clickAdd()}>
