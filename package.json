@@ -4,7 +4,9 @@
   "private": true,
   "main": "src/electron-starter.js",
   "homepage": "./",
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/styles": "^4.9.6"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

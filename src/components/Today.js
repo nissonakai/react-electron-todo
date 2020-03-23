@@ -6,7 +6,6 @@ export const Today = ({
     clickDone,
     todaysTodos
 }) => {
-
     return (
         <>
         <TodoList

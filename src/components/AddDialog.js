@@ -6,17 +6,25 @@ import {
     DialogContent,
     DialogTitle,
     Fab,
-    Button
+    Button,
+    Container
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 import {
     Add
 } from '@material-ui/icons';
 
+const useStyles = makeStyles({
+    centering: {
+        marginTop: 20,
+        textAlign: 'center'
+    }
+});
+
 export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAdd, newTodo }) => {
-    
-    
+    const classes = useStyles();
     return (
-        <>
+        <Container className={classes.centering}>
             <Fab aria-label="edit" onClick={() => handleOpen()}>
                 <Add />
             </Fab>
@@ -55,6 +63,6 @@ export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAd
                     </Button>
                 </DialogActions>
             </Dialog>
-        </>
+        </Container>
     );
 };

@@ -1,6 +1,13 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/styles';
 import { LinkButtons } from './LinkButtons';
 import { Button } from '@material-ui/core';
+
+const useStyles = makeStyles({
+    centering: {
+        textAlign: 'center'
+    }
+});
 
 export const TodoList = ({
     targetTodos,
@@ -8,12 +15,12 @@ export const TodoList = ({
     clickDone,
     title
 }) => {
-
+    const classes = useStyles();
     const todoComp = targetTodos.map(todo => {
         return (
-            <div key={todo.title}>
+            <div key={todo.title} className={classes.centering}>
                 <h2>{todo.title}</h2>
-                <p>{todo.deadline}</p>
+                <p>{todo.deadline.replace("T", " ")}</p>
                 <Button
                     variant="text"
                     color="secondary"
@@ -30,7 +37,7 @@ export const TodoList = ({
     return (
         <>
             <LinkButtons />
-            <h1>{title}TODO</h1>
+            <h1 className={classes.centering}>{title}TODO</h1>
             {todoComp}
         </>
     );
