@@ -29,12 +29,13 @@ const useStyles = makeStyles({
 
 export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAdd, newTodo }) => {
     const classes = useStyles();
+    // sss
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Container className={classes.centering}>
                 <Fab aria-label="edit" onClick={() => handleOpen()}>
                     <Add />
-                </Fab>
+                </Fab
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">新規追加</DialogTitle>
                     <DialogContent>
