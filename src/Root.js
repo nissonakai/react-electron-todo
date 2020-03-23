@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Today } from './components/Today';
 import { Future } from './components/Future';
 import { DoneTodo } from './components/DoneTodo';
