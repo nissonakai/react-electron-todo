@@ -4,11 +4,13 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/styles';
 import { Today } from './components/Today';
 import { Future } from './components/Future';
 import { DoneTodo } from './components/DoneTodo';
 import { OveredTodo } from "./components/OveredTodo";
 import { AddDialog } from "./components/AddDialog";
+import { theme } from "./assets/theme";
 
 export const Root = () => {
 
@@ -108,7 +110,7 @@ export const Root = () => {
   })
 
   return (
-    <>
+    <MuiThemeProvider theme={theme}>
       <Router>
         <Switch>
           <Route path="/" exact>
@@ -149,6 +151,6 @@ export const Root = () => {
         clickAdd={clickAdd}
         newTodo={newTodo}
       />
-    </>
+    </MuiThemeProvider>
   )
 };
