@@ -15,9 +15,9 @@ import { theme } from "./assets/theme";
 export const Root = () => {
 
   const [todos, setTodos] = useState([
-    { title: "test1", deadline: "2020-03-04 15:30", done: false },
-    { title: "test2", deadline: "2020-03-27 17:30", done: false },
-    { title: "test3", deadline: "2020-03-30 13:30", done: false }
+    { title: "test1", deadline: "2020/03/04 15:30", done: false },
+    { title: "test2", deadline: "2020/03/27 17:30", done: false },
+    { title: "test3", deadline: "2020/03/30 13:30", done: false }
   ]);
   const [open, setOpen] = useState();
   const [newTodo, setNewTodo] = useState({
@@ -58,7 +58,7 @@ export const Root = () => {
   }
 
   const dateIsWhen = date => {
-    const targetDate = new Date(date);
+    const targetDate = new Date(date.replace(/-/g,"/"));
     const year = targetDate.getFullYear();
     const month = targetDate.getMonth() + 1;
     const day = targetDate.getDate();
