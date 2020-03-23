@@ -35,7 +35,7 @@ export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAd
             <Container className={classes.centering}>
                 <Fab aria-label="edit" onClick={() => handleOpen()}>
                     <Add />
-                </Fab
+                </Fab>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">新規追加</DialogTitle>
                     <DialogContent>
@@ -52,17 +52,6 @@ export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAd
                                 />
                             </Grid>
                             <Grid container>
-                                {/* <TextField
-                                margin="dense"
-                                name="deadline"
-                                label="期日"
-                                type="datetime-local"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                value={newTodo.deadline}
-                                onChange={e => handleChange(e)}
-                            /> */}
                                 <DateTimePicker
                                     variant="inline"
                                     name="deadline"
