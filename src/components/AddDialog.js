@@ -10,6 +10,8 @@ import {
     Container,
     Grid
 } from "@material-ui/core";
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
 import { makeStyles } from "@material-ui/styles";
 import {
     Add
@@ -28,27 +30,28 @@ const useStyles = makeStyles({
 export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAdd, newTodo }) => {
     const classes = useStyles();
     return (
-        <Container className={classes.centering}>
-            <Fab aria-label="edit" onClick={() => handleOpen()}>
-                <Add />
-            </Fab>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">新規追加</DialogTitle>
-                <DialogContent>
-                    <Container>
-                        <Grid container className={classes.mb}>
-                            <TextField
-                                autoFocus
-                                margin="dense"
-                                name="title"
-                                label="TODO"
-                                type="text"
-                                value={newTodo.title}
-                                onChange={e => handleChange(e)}
-                            />
-                        </Grid>
-                        <Grid container>
-                            <TextField
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Container className={classes.centering}>
+                <Fab aria-label="edit" onClick={() => handleOpen()}>
+                    <Add />
+                </Fab>
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">新規追加</DialogTitle>
+                    <DialogContent>
+                        <Container>
+                            <Grid container className={classes.mb}>
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    name="title"
+                                    label="TODO"
+                                    type="text"
+                                    value={newTodo.title}
+                                    onChange={e => handleChange(e)}
+                                />
+                            </Grid>
+                            <Grid container>
+                                {/* <TextField
                                 margin="dense"
                                 name="deadline"
                                 label="期日"
@@ -58,19 +61,28 @@ export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAd
                                 }}
                                 value={newTodo.deadline}
                                 onChange={e => handleChange(e)}
-                            />
-                        </Grid>
-                    </Container>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => clickAdd()}>
-                        追加
+                            /> */}
+                                <DateTimePicker
+                                    variant="inline"
+                                    name="deadline"
+                                    value={newTodo.deadline}
+                                    onChange={e => handleChange(e)}
+                                    textFieldStyle={{ width: '100%' }}
+                                    hintText="期日"
+                                />
+                            </Grid>
+                        </Container>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => clickAdd()}>
+                            追加
                     </Button>
-                    <Button onClick={() => handleClose()} color="secondary">
-                        キャンセル
+                        <Button onClick={() => handleClose()} color="secondary">
+                            キャンセル
                     </Button>
-                </DialogActions>
-            </Dialog>
-        </Container>
+                    </DialogActions>
+                </Dialog>
+            </Container>
+        </MuiPickersUtilsProvider>
     );
 };
