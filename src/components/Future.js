@@ -4,7 +4,9 @@ import { TodoList } from './TodoList';
 export const Future = ({
     clickDelete,
     clickDone,
-    futureTodos
+    futureTodos,
+    tabValue,
+    setTabValue
 }) => {
 
     return (
@@ -14,6 +16,8 @@ export const Future = ({
                 clickDelete={clickDelete}
                 clickDone={clickDone}
                 title="明日以降の"
+                tabValue={tabValue}
+                setTabValue={setTabValue}
             />
         </>
     )

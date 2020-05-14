@@ -27,9 +27,8 @@ const useStyles = makeStyles({
     }
 });
 
-export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAdd, newTodo }) => {
+export const AddDialog = ({ open, handleOpen, handleClose, handleChange, handleChangeDate, clickAdd, newTodo }) => {
     const classes = useStyles();
-    // sss
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Container className={classes.centering}>
@@ -56,9 +55,7 @@ export const AddDialog = ({ open, handleOpen, handleClose, handleChange, clickAd
                                     variant="inline"
                                     name="deadline"
                                     value={newTodo.deadline}
-                                    onChange={e => handleChange(e)}
-                                    textFieldStyle={{ width: '100%' }}
-                                    hintText="期日"
+                                    onChange={e => handleChangeDate(e)}
                                 />
                             </Grid>
                         </Container>

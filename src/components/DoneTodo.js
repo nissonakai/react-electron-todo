@@ -4,7 +4,9 @@ import { TodoList } from './TodoList';
 export const DoneTodo = ({
     clickDelete,
     clickDone,
-    doneTodos
+    doneTodos,
+    tabValue,
+    setTabValue
 }) => {
     return (
         <>
@@ -13,6 +15,8 @@ export const DoneTodo = ({
                 clickDelete={clickDelete}
                 clickDone={clickDone}
                 title="完了した"
+                tabValue={tabValue}
+                setTabValue={setTabValue}
             />
         </>
     )

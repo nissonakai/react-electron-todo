@@ -4,7 +4,9 @@ import { TodoList } from './TodoList';
 export const Today = ({
     clickDelete,
     clickDone,
-    todaysTodos
+    todaysTodos,
+    tabValue,
+    setTabValue
 }) => {
     return (
         <>
@@ -13,6 +15,8 @@ export const Today = ({
             clickDelete={clickDelete}
             clickDone={clickDone}
             title="今日の"
+            tabValue={tabValue}
+            setTabValue={setTabValue}
         />
         </>
     )

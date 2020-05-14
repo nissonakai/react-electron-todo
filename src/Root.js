@@ -14,15 +14,12 @@ import { theme } from "./assets/theme";
 
 export const Root = () => {
 
-  const [todos, setTodos] = useState([
-    { title: "test1", deadline: "2020/03/04 15:30", done: false },
-    { title: "test2", deadline: "2020/03/27 17:30", done: false },
-    { title: "test3", deadline: "2020/03/30 13:30", done: false }
-  ]);
-  const [open, setOpen] = useState();
+  const [todos, setTodos] = useState([]);
+  const [open, setOpen] = useState(false);
   const [newTodo, setNewTodo] = useState({
-    title: "", deadline: "", done: false
+    title: "", deadline: new Date(), done: false
   });
+  const [tabValue, setTabValue] = useState("1");
 
   const handleOpen = () => {
     setOpen(true);
@@ -34,6 +31,10 @@ export const Root = () => {
 
   const handleChange = e => {
     setNewTodo({ ...newTodo, [e.target.name]: e.target.value });
+  };
+
+  const handleChangeDate = e => {
+    setNewTodo({...newTodo, "deadline": e});
   };
 
   const clickAdd = () => {
@@ -58,7 +59,7 @@ export const Root = () => {
   }
 
   const dateIsWhen = date => {
-    const targetDate = new Date(date.replace(/-/g,"/"));
+    const targetDate = new Date(date);
     const year = targetDate.getFullYear();
     const month = targetDate.getMonth() + 1;
     const day = targetDate.getDate();
@@ -107,7 +108,7 @@ export const Root = () => {
 
   const overedTodos = todos.filter(todo => {
     return todo.done === false && !dateIsWhen(todo.deadline);
-  })
+  });
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -118,6 +119,8 @@ export const Root = () => {
               todaysTodos={todaysTodos}
               clickDelete={clickDelete}
               clickDone={clickDone}
+              tabValue={tabValue}
+              setTabValue={setTabValue}
             />
           </Route>
           <Route path="/future" exact>
@@ -125,6 +128,8 @@ export const Root = () => {
               futureTodos={futureTodos}
               clickDelete={clickDelete}
               clickDone={clickDone}
+              tabValue={tabValue}
+              setTabValue={setTabValue}
             />
           </Route>
           <Route path="/done" exact>
@@ -132,6 +137,8 @@ export const Root = () => {
               doneTodos={doneTodos}
               clickDelete={clickDelete}
               clickDone={clickDone}
+              tabValue={tabValue}
+              setTabValue={setTabValue}
             />
           </Route>
           <Route path="/over" exact>
@@ -139,6 +146,8 @@ export const Root = () => {
               overedTodos={overedTodos}
               clickDelete={clickDelete}
               clickDone={clickDone}
+              tabValue={tabValue}
+              setTabValue={setTabValue}
             />
           </Route>
         </Switch>
@@ -148,6 +157,7 @@ export const Root = () => {
         handleOpen={handleOpen}
         handleClose={handleClose}
         handleChange={handleChange}
+        handleChangeDate={handleChangeDate}
         clickAdd={clickAdd}
         newTodo={newTodo}
       />

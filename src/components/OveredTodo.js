@@ -4,7 +4,9 @@ import { TodoList } from './TodoList';
 export const OveredTodo = ({
     clickDelete,
     clickDone,
-    overedTodos
+    overedTodos,
+    tabValue,
+    setTabValue
 }) => {
     return (
         <>
@@ -13,6 +15,8 @@ export const OveredTodo = ({
             clickDelete={clickDelete}
             clickDone={clickDone}
             title="期限切れの"
+            tabValue={tabValue}
+            setTabValue={setTabValue}
         />
         </>
     );
