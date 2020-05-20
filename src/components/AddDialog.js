@@ -1,4 +1,5 @@
 import React from "react";
+import { useDialog } from "../logic/useDialog";
 import {
     Dialog,
     TextField,
@@ -11,6 +12,7 @@ import {
     Grid
 } from "@material-ui/core";
 import DateFnsUtils from '@date-io/date-fns';
+import jaLocale from "date-fns/locale/ja";
 import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -27,10 +29,14 @@ const useStyles = makeStyles({
     }
 });
 
-export const AddDialog = ({ open, handleOpen, handleClose, handleChange, handleChangeDate, clickAdd, newTodo }) => {
+export const AddDialog = ({
+    todos,
+    setTodos
+}) => {
     const classes = useStyles();
+    const [open, handleOpen, handleClose, handleChange, handleChangeDate, clickAdd, newTodo] = useDialog(todos, setTodos);
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
             <Container className={classes.centering}>
                 <Fab aria-label="edit" onClick={() => handleOpen()}>
                     <Add />
